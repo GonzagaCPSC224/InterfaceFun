@@ -1,4 +1,6 @@
-public class Circle {
+public class Circle extends Object implements Comparable<Circle>, Shape {
+    // can have one super class, can have multiple interfaces we implement
+    // <T> parametrized type (AKA generics)
     private Point center;
     private double radius;
 
@@ -26,6 +28,30 @@ public class Circle {
                 "center=" + center +
                 ", radius=" + radius +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Circle o) {
+        // compare circles by the size of their radius
+        // can write this shorter...
+        if (this.radius < o.radius) {
+            return -1;
+        }
+        if (this.radius > o.radius) {
+            return 1;
+        }
+        return 0;
+
+    }
+
+    @Override
+    public double computePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public double computeArea() {
+        return Math.PI * Math.pow(radius, 2.0);
     }
 
     public Point getCenter() {
