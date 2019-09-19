@@ -55,7 +55,35 @@ public class InterfaceTester {
         System.out.println(Arrays.toString(myCircles));
 
         // we can define our own interfaces
+        Shape myShape = myCircle;
+        // task: define a Rectangle which is also a Shape
+        // create an array of Shape references, some are actually Rectangles, some are Circles
+        // print it out
+        Shape[] myShapes = new Shape[3];
+        myShapes[0] = myCircle;
+        myShapes[1] = new Rectangle(4, 6);
 
+        // anonymous class
+        myShapes[2] = new Shape() {
+            // this shape represents a 5x5
+            @Override
+            public double computePerimeter() {
+                return 20;
+            }
+
+            @Override
+            public double computeArea() {
+                return 25;
+            }
+        };
+
+        // another example of polymorphism
+        for (Shape shape: myShapes) {
+            System.out.println(shape);
+            System.out.println(shape.computePerimeter());
+            System.out.println(shape.computeArea());
+            System.out.println("***********************");
+        }
 
 
     }
